@@ -1,5 +1,5 @@
 from django.db import models
-
+from cloudinary_storage.storage import VideoMediaCloudinaryStorage
 
 class GalleryLook(models.Model):
     CATEGORY_CHOICES = [
@@ -34,3 +34,10 @@ class GalleryMedia(models.Model):
 
     def __str__(self):
         return f"{self.look.title or self.look.category} - {self.media_type}"
+    
+    video = models.FileField(
+    upload_to='gallery/videos/',
+    storage=VideoMediaCloudinaryStorage(),
+    blank=True,
+    null=True
+    )
