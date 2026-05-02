@@ -1,0 +1,71 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+<div class="hero">
+    <div class="overlay">
+
+        <h1>Aseel Makeup Artist</h1>
+
+        <a href="#portfolio" class="btn">
+           Scroll down and leave your feedback
+        </a>
+
+    </div>
+</div>
+
+<section id="portfolio">
+    <h2>Gallery</h2>
+
+    <div class="looks-wrapper">
+        {% for look in gallery_looks %}
+            <div class="look-card">
+                <h3>{{ look.title }}</h3>
+
+                <div class="slider-container">
+                    <button class="slider-btn prev" data-look-id="{{ look.id }}" onclick="moveSlide(this.dataset.lookId, -1)">❮</button>
+
+
+                    <div class="slider" id="slider-{{ look.id }}">
+                        {% for media in look.media_items.all %}
+                            <div class="slide {% if forloop.first %}active{% endif %}">
+                                {% if media.media_type == 'image' and media.image %}
+                                    <img src="{{ media.image.url }}" alt="{{ look.title }}">
+                                {% elif media.media_type == 'video' and media.video %}
+                                    <video controls playsinline preload="metadata" class="gallery-video">
+                                        <source src="{{ media.video.url }}" type="video/mp4">
+                                        הדפדפן שלך לא תומך בוידאו.
+                                    </video>
+                                {% endif %}
+                            </div>jpeg 
+                        {% endfor %}
+                    </div>
+
+                    <button class="slider-btn next" data-look-id="{{ look.id }}" onclick="moveSlide(this.dataset.lookId, 1)">❯</button>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+<script>
+let indexMap = {};
+
+function moveSlide(id, step) {
+    const slider = document.getElementById("slider-" + id);
+    const slides = slider.querySelectorAll(".slide");
+
+    if (!(id in indexMap)) indexMap[id] = 0;
+
+    slides[indexMap[id]].classList.remove("active");
+
+    indexMap[id] += step;
+
+    if (indexMap[id] >= slides.length) indexMap[id] = 0;
+    if (indexMap[id] < 0) indexMap[id] = slides.length - 1;
+
+    slides[indexMap[id]].classList.add("active");
+}
+</script>
+
+{% endblock %}

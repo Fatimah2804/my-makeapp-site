@@ -1,0 +1,278 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: 'Cairo', sans-serif;
+    direction: rtl;
+    color: white;
+}
+
+/* רקע */
+.page-bg {
+    position: fixed;
+    inset: 0;
+    background-image: url("/static/core/images/shams.jpeg");
+    background-size: cover;
+    background-position: center;
+    z-index: -2;
+}
+
+/* שכבת כהות */
+.page-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+}
+
+/* תפריט למעלה */
+.top-bar {
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.top-bar {
+    direction: ltr ;
+}
+.logo-box {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 1100;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.site-logo {
+    width: 300px;
+    height: auto;
+    border-radius: 12px;
+}
+.admin-login-btn {
+    background: rgba(255, 255, 255, 0.18);
+    color: #f5cadd;
+    text-decoration: none;
+    font-family: 'Lora', serif;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 8px 14px;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.admin-login-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+}
+
+/* תפריט צד */
+.menu {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+
+/* לינקים */
+.menu a {
+    color: #f5cadd;
+    text-decoration: none; /* ❌ מוריד את הקו */
+    font-size: 20px;
+    font-weight: bold;
+    padding: 6px 10px;
+    border-radius: 10px;
+    transition: 0.3s;
+    font-family: 'Lora', sans-serif;
+    letter-spacing: 1px;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.menu a:hover {
+    color: white;
+    background: rgba(245, 163, 199, 0.3);
+}
+
+/* רווח מתחת לתפריט */
+.main-content {
+    padding-top: 100px;
+}
+
+/* HERO */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay {
+    text-align: center;
+}
+
+/* כותרת */
+.hero h1 {
+    font-family: 'Lora', serif;
+    letter-spacing: 2px;
+    font-size: 60px;
+    color: #f6d7c3;
+}
+
+/* כפתורים */
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.85);
+    color: black;
+    padding: 14px 26px;
+    border-radius: 16px;
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: bold;
+    font-family: 'Lora', serif;
+    letter-spacing: 1.5px;
+}
+
+.btn:hover {
+    background: #ffd7e9;
+    color: white;
+}
+
+/* גלריה */
+#portfolio {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.looks-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.look-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.slider-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.slider {
+    max-width: 500px;
+    width: 100%;
+}
+
+.slide {
+    display: none;
+}
+
+.slide.active {
+    display: block;
+}
+
+.slide img,
+.slide video {
+    width: 100%;
+    border-radius: 16px;
+}
+.gallery-video {
+    width: 100%;
+    max-height: 600px;
+    border-radius: 16px;
+    background: black;
+    display: block;
+}
+
+/* כפתורי חצים */
+.slider-btn {
+    background: black;
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.contact-page {
+    min-height: 100vh;
+    padding: 120px 20px 40px;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.contact-page h1 {
+    font-family: 'Lora', serif;
+    font-size: 50px;
+    color: #f6d7c3;
+    margin-bottom: 20px;
+}
+
+.about {
+    font-size: 20px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+/* כפתורים */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.social-btn {
+    padding: 14px 26px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Lora', serif;
+    transition: 0.3s;
+}
+
+/* WhatsApp */
+.whatsapp {
+    background: #25D366;
+    color: white;
+}
+
+.whatsapp:hover {
+    background: #1da851;
+}
+
+/* Instagram */
+.instagram {
+    background: #E1306C;
+    color: white;
+}
+
+.instagram:hover {
+    background: #c1275b;
+}
+
+/* מחירים */
+.prices h2 {
+    margin-bottom: 15px;
+    font-family: 'Lora', serif;
+}
+
+.prices p {
+    font-size: 22px;
+    margin: 8px 0;
+}

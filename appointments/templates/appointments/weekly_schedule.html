@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>  الجدول الأسبوعي | Weekly Schedule</title>
+
+<style>
+body {
+    font-family: Arial;
+    background: white;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Lora', serif;
+}
+
+h1 {
+    color: #c1a592;
+    font-family: 'Lora', serif;
+    margin-bottom: 30px;
+}
+
+.date-form {
+    margin-bottom: 20px;
+    font-family: 'Lora', serif;
+}
+
+.date-form input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: 'Lora', serif;
+}
+
+.date-form button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    background: #efe5e8;
+    color: black;
+    font-size: 16px;
+    cursor: pointer;
+    margin-right: 8px;
+    font-family: 'Lora', serif;
+}
+
+table {
+    background: #efe5e8;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #efe5e8;
+    padding: 10px;
+    font-family: 'Lora', serif;
+}
+
+th {
+    background: #efe5e8;
+    font-family: 'Lora', serif;
+}
+
+.time-col {
+    background: #fafafa;
+    font-weight: bold;
+    font-family: 'Lora', serif;
+}
+
+.available {
+    background: #fff;
+    padding: 0;
+}
+
+.available:hover {
+    background: #efe5e8;
+}
+
+.slot-link {
+    display: block;
+    width: 100%;
+    min-height: 45px;
+    text-decoration: none;
+}
+
+.booked {
+    background: #efe5e8;
+}
+
+</style>
+<div style="margin-bottom: 20px;">
+    <a href="/" style="
+        display:inline-block;
+        padding:10px 18px;
+        background:#efe5e8;
+        color:black;
+        text-decoration:none;
+        border-radius:8px;
+        font-weight:bold;
+    ">
+        العودة للرئيسية | Home
+    </a>
+</div>
+</head>
+
+<body>
+
+<h1> الجدول الأسبوعي| Weekly Schedule</h1>
+
+<form method="get" class="date-form">
+    <label for="selected_date"> اختاري تاريخ | Choose a date:</label>
+    <input type="date" id="selected_date" name="selected_date" value="{{ selected_date }}">
+    <button type="submit">عرض الأسبوع | Display Week</button>
+</form>
+
+<table>
+<thead>
+<tr>
+    <th>الساعة | Hour</th>
+    {% for day in week_days %}
+        <th>
+            {{ day.arabic_name }}<br>
+            {{ day.date }}
+        </th>
+    {% endfor %}
+</tr>
+</thead>
+
+<tbody>
+{% for row in schedule %}
+<tr>
+    <td class="time-col">{{ row.hour }}</td>
+
+    {% for slot in row.slots %}
+        {% if slot.is_booked %}
+            <td class="booked"></td>
+        {% else %}
+            <td class="available">
+                <a class="slot-link" href="/appointments/book/?date={{ slot.date|date:'Y-m-d' }}&time={{ slot.time }}">
+                    &nbsp;
+                </a>
+            </td>
+        {% endif %}
+    {% endfor %}
+</tr>
+{% endfor %}
+</tbody>
+</table>
+
+</body>
+</html>
