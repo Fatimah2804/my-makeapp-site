@@ -1,3 +1,4 @@
+import random
 from django.shortcuts import render, redirect
 from .forms import AppointmentForm
 from .models import Appointment
@@ -100,3 +101,4 @@ def weekly_schedule(request):
         'schedule': schedule,
         'selected_date': selected_date.strftime('%Y-%m-%d'),
     })
+
