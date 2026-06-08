@@ -13,7 +13,7 @@ body {
 .page-bg {
     position: fixed;
     inset: 0;
-    background-image: url("/static/core/images/shams.jpeg");
+    background-image: url("/static/core/images/logo2.jpeg");
     background-size: cover;
     background-position: center;
     z-index: -2;
